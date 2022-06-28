@@ -1,0 +1,22 @@
+<package format="2">
+  <name>cartographer_rover_velodyne</name>
+  <version>0.1.0</version>
+  <description>
+    Cartographer configurations and launch files for the MIT Racecar equipped with Velodyne VLP-16 LiDAR.
+  </description>
+  <maintainer email="vishrutskaushik@gmail.com">
+    Vishrut Kaushik
+  </maintainer>
+  <license>Apache 2.0</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>g++-static</build_depend>
+
+  <depend>cartographer_ros</depend>
+  <depend>message_runtime</depend>
+  <depend>roscpp</depend>
+  <depend>roslib</depend>
+
+  <test_depend>rosunit</test_depend>
+</package>

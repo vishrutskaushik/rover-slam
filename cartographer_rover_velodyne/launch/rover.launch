@@ -1,0 +1,24 @@
+<launch>
+    <param name="/use_sim_time" value="false" />
+
+    <!-- <remap from="/imu/data" to="imu"/>
+    <remap from="/velodyne_points" to="points2"  /> -->
+
+    <!-- <include file="$(find cartographer_kitti_config)/launch/kitti_3d.launch" /> -->
+
+    <node name="cartographer_node" pkg="cartographer_ros"
+    type="cartographer_node" args="
+        -configuration_directory $(find cartographer_rover_velodyne)/configuration_files
+        -configuration_basename rover.lua"
+    output="screen">
+        <remap from="imu" to="imu/data"/>
+        <remap from="points2" to="velodyne_points" />
+        <remap from="odom" to="vesc/odom" />
+    </node>
+
+    <node name="cartographer_occupancy_grid_node" pkg="cartographer_ros"
+        type="cartographer_occupancy_grid_node" args="-resolution 0.3" />
+
+    <node name="rviz" pkg="rviz" type="rviz" required="true"
+    args="-d $(find cartographer_rover_velodyne)/configuration_files/slam.rviz"/>
+</launch>
